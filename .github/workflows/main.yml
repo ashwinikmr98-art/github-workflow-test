@@ -26,15 +26,7 @@ jobs:
         with:
           terraform_version: 1.13.5
 
-      - name: Terraform Initialize
-        run: terraform init
+      - name: Terraform destroy
+        run: terraform destroy --auto-approve
 
-      - name: Terraform Validate
-        run: terraform validate
 
-      - name: Terraform Plan
-        run: terraform plan
-
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
